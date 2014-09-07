@@ -3,6 +3,7 @@ package com.trycucumber.systemtests.pages.home;
 import com.trycucumber.systemtests.api.SeleniumAPI;
 import com.trycucumber.systemtests.framework.AbstractSeleniumTest;
 import com.trycucumber.systemtests.util.UriManager;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -43,6 +44,19 @@ public class HomePageIT extends AbstractSeleniumTest {
         seleniumAPI.start();
         seleniumAPI.implicit();
     }
+
+    /**
+     * Tear down.
+     *
+     * @throws IOException the iO exception
+     */
+    @After("@HomePage")
+    public void tearDown() throws IOException {
+        logger.debug("Tear Down Running HomePage Functional Tests...");
+        seleniumAPI.getScreenShot("");
+        seleniumAPI.quit();
+    }
+
 
     /**
      * Start happy path.
